@@ -12,4 +12,4 @@ The second folder corresponds to the exact exercise (folder 1 corresponds to "**
 # Feel free to open issues, i will gladly update the repo and respond to answers.
 You can contact me on instagram or telegram @lesghsw for a most rapid answer.
 
-# OldEx is a folder where some exercices that i can no longer remember where i got them from are stored, those exercises **WILL NOT** be updated.
+# OldEx is a folder where some exercices that i can no longer remember where i got them from are stored, those exercises **WILL NOT** be updated OR get comments explaining the code.
