@@ -5,6 +5,9 @@
 # decidere dopo cinque tentativi quanti elementi con valore 1 ha individuato.
 # Ogni volta che individua un 1 l'elemento è settato a 0.
 
+
+# !!! I'm sorry if it print the matrix out on one line but that's an easy fix that i'm too lazy to do.
+
 .data
 rowIn: .asciiz "Insert Row: "
 colIn: .asciiz "Insert Col: "
@@ -37,10 +40,10 @@ MatrixInitLoop:
 	li $a1, 2
 	syscall
 	
-	sb $a0, matrix($t0)
+	sb $a0, matrix($t0) # Save value in matrix
 	
+	# Update loop and branch accordingly
 	addi $t0, $t0, 1
-	
 	blt $t0, 100, MatrixInitLoop
 	
 	
@@ -56,36 +59,37 @@ GameLoop:
 	la $a0, rowIn
 	syscall
 	
-	li $v0, 5
+	li $v0, 5 # Get row
 	syscall
 	
 	subi $t0, $v0, 1
 	
-	bgt $t0, 9, IndexError
+	bgt $t0, 9, IndexError # Check for and index error
 	
 	li $v0, 4
 	la $a0, colIn
 	syscall
 	
-	li $v0, 5
+	li $v0, 5 # Get col
 	syscall
 	
 	subi $t1, $v0, 1
 	
-	bgt $t1, 9, IndexError
+	bgt $t1, 9, IndexError # Check for and index error
 	
+	# Calculate index
 	mul $t0, $t0, 10
-	
 	add $t1, $t1, $t0
 	
+	# Get value and check if it's equal to one, act accordingly
 	lb $t2, matrix($t1)
 	beq $t2, 1, one
 endIfEqOne:
-	
+	# Update counter and check if another game loop is needed, act accordingly
 	addi $t9, $t9, 1
-	
 	blt $t9, 5, GameLoop
 	
+	# Start printing procedure because game ended
 	jal MatrixPrint
 	
 	li $v0, 4
@@ -101,8 +105,8 @@ end:    li $v0, 10
 	syscall
 
 one:
-	sb $zero, matrix($t1)
-	addi $t8, $t8, 1
+	sb $zero, matrix($t1) # Set value to zero in matrix
+	addi $t8, $t8, 1 # Update count of 1s found
 	
 	j endIfEqOne
 	

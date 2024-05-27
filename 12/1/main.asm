@@ -4,6 +4,7 @@
 #il numero di riga ed il numero di colonna e visualizzare su schermo l'elemento.
 
 .data
+# Matrix: 
 # 1  2  3  4  5
 # 6  7  8  9  10
 # 11 12 13 14 15
@@ -23,34 +24,34 @@ main:
 	la $a0, colIn
 	syscall
 	
-	li $v0, 5
+	li $v0, 5 # Get col
 	syscall
 	
 	subi $t0, $v0, 1
 	
-	bgt $t0, 4, IndexError
+	bgt $t0, 4, IndexError # Check if index is valid
 	
 	li $v0, 4
 	la $a0, rowIn
 	syscall
 	
-	li $v0, 5
+	li $v0, 5 # Get row
 	syscall
 	
 	subi $t1, $v0, 1
 	
-	bgt $t1, 4, IndexError
+	bgt $t1, 4, IndexError # Check if index is valid
 	
+	# Calculate index given row ($t1), column ($t0), matrix width (5) and that matrix values are half words (2 Bytes)
 	mul $t1, $t1, 5
 	add, $t0, $t0, $t1
-	
 	mul $t0, $t0, 2
 	
-	lh $t9, matrix($t0)
+	lh $t9, matrix($t0) # Get value at index
 	
+	# Print value
 	li $v0, 1
 	move $a0, $t9
-	
 	syscall
 	
 
