@@ -1,7 +1,7 @@
 # Welcome!
 This is the repo where i upload all the ADE exercises i do.
 
-This Franco Liberati's website (Where i got the exercises from): https://arch2.scienceontheweb.net/esercizi.html.
+This is Franco Liberati's website (Where i got the exercises from): https://arch2.scienceontheweb.net/esercizi.html.
 
 ## To find an exercise just navigate to the correct folder:
 
