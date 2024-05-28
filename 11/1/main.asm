@@ -30,7 +30,7 @@ f:	# Check base case
 	beqz $a0, endf
 	beqz $a1, endf
 	
-	subu $sp, $sp, 8 # Prepare stack for 2 words
+	subiu $sp, $sp, 8 # Prepare stack for 2 words
 	
 	# Store x and ra (it is not needed to store y because it's not part of the formula)
 	sw $a0, 0($sp)
@@ -47,7 +47,7 @@ f:	# Check base case
 	lw $a0, 0($sp)
 	lw $ra, 4($sp)
 	
-	addi $sp, $sp, 8 # Restore stack pointer
+	addiu $sp, $sp, 8 # Restore stack
 	
 	mul $v0, $v0, $a0 # Apply formula to update return value
 	
